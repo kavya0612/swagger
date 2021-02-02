@@ -1,0 +1,88 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a simple API",
+    "version": "1.0.0",
+    "title": "Simple View KPI API",
+    "contact": {
+      "email": "kavya.bhaskar@elspectra.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "virtserver.swaggerhub.com",
+  "basePath": "/kavya0612/view-kpi/1.0.0",
+  "tags": [
+    {
+      "name": "elspectra",
+      "description": "Secured Admin-only calls"
+    },
+    {
+      "name": "view kpi",
+      "description": "Operations available to regular developers"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/kpi/view-kpi": {
+      "get": {
+        "tags": [
+          "view kpi"
+        ],
+        "summary": "searches kpi for given name",
+        "description": "By passing in the appropriate kpi name, you can search for\navailable entry in the system\n",
+        "operationId": "searchdb",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "search for kpi",
+            "in": "query",
+            "description": "pass any kpi name",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Kpi_items"
+              }
+            }
+          },
+          "400": {
+            "description": "given name is not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Kpi_items": {
+      "type": "object",
+      "required": [
+        "desc",
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Order processing time"
+        },
+        "desc": {
+          "type": "string",
+          "example": "Order processing time is the time taken for processing an order"
+        }
+      }
+    }
+  }
+}

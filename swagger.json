@@ -1,0 +1,30 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "description": "swagger api documentation",
+      "version": "1.0.1",
+      "title": "View Key Performance Indicators",
+      "contact":{
+          "email":"kavyabhaskar12@gmail.com"
+      }
+      },
+      "tags": [
+        {
+          "name": "Viewing kpi",
+          "description": "Example API for requesting and return kpi"
+        }
+      ],
+      "paths":{
+      "/kpi/view-kpi":{"get":{"tags":["kpis"],"summary":"Gives kpi details",
+        "description":"",
+        "produces":["application/json"],
+        "parameters":[{"name":"kpiname","description":"Name of the kpi",
+            "required":true,
+            "type":"string"
+            }]
+          }
+          ,
+                "responses":{"200":{"description":"successful operation",
+                            "schema":{"type":"string"}},
+                            "400":{"description":"Invalid kpiname supplied"
+                              }}}}}
